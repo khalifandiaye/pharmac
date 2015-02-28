@@ -1,0 +1,15 @@
+H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\bin\Debug\PharmaProject.pdb
+H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\PharmaProject.pdb
+H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\bin\Debug\PharmaProject.exe.config
+H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\bin\Debug\PharmaProject.exe
+H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\PharmaProject.exe
+E:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\bin\Debug\PharmaProject.exe.config
+E:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\PharmaProject.exe
+E:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\PharmaProject.pdb
+E:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\bin\Debug\PharmaProject.exe
+E:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\bin\Debug\PharmaProject.pdb
+E:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\PharmaProject.csprojResolveAssemblyReference.cache
+H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\PharmaProject.csproj.GenerateResource.Cache
+H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\PharmaProject.Preparateur.resources
+H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\PharmaProject.Accueil.resources
+H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\PharmaProject.Client.resources
