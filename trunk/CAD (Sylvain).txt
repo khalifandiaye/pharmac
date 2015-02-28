@@ -1,0 +1,5 @@
+Couche d'accès aux données : 
+- enlever les contrôles inutiles (UserExists)
+- Revoir la vérification du type d'utilisateur 
+
+
