@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B4E55BE5-3A53-4D86-AE9E-9077D8CD3A48}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PharmaProject</RootNamespace>
+    <AssemblyName>PharmaProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CL_DATA_ACCES.cs" />
+    <Compile Include="CL_SMTP.cs" />
+    <Compile Include="COUCHE METIER\EXECUTION\CL_WF_CommandesImpayées.cs" />
+    <Compile Include="COUCHE METIER\EXECUTION\CL_WF_CreerUtilisateur.cs" />
+    <Compile Include="COUCHE METIER\EXECUTION\CL_WF_CalculsFinanciers.cs" />
+    <Compile Include="COUCHE METIER\EXECUTION\CL_WF_VerificationDroits.cs" />
+    <Compile Include="COUCHE METIER\TECHNIQUE\CL_CT_CalculFacturationDateDate.cs" />
+    <Compile Include="COUCHE METIER\TECHNIQUE\CL_CT_CalculValeurStock.cs" />
+    <Compile Include="COUCHE PROCESSUS\CL_PROCESS_CLIENT.cs" />
+    <Compile Include="COUCHE PROCESSUS\CL_PROCESS_FOURNISSEUR.cs" />
+    <Compile Include="COUCHE PROCESSUS\CL_PROCESS_PHARMACIEN.cs" />
+    <Compile Include="COUCHE PROCESSUS\CL_PROCESS_PREPARATEUR.cs" />
+    <Compile Include="CL_SERVER_COMPONENT.cs" />
+    <Compile Include="CL_WORK_COMPONENT.cs" />
+    <Compile Include="COUCHE METIER\EXECUTION\CL_WF_Connect.cs" />
+    <Compile Include="COUCHE METIER\EXECUTION\CL_WF_LancerTest.cs" />
+    <Compile Include="COUCHE METIER\MAPPING\CL_MAP.cs" />
+    <Compile Include="CL_WORKFLOW.cs" />
+    <Compile Include="CL_MESSAGE.cs" />
+    <Compile Include="CL_PROCESS.cs" />
+    <Compile Include="Accueil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accueil.Designer.cs">
+      <DependentUpon>Accueil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preparateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Preparateur.Designer.cs">
+      <DependentUpon>Preparateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IWorkflow.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Accueil.resx">
+      <DependentUpon>Accueil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preparateur.resx">
+      <DependentUpon>Preparateur.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
