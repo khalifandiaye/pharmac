@@ -1,0 +1,42 @@
+Une interface par utilisateur 
+=================================================
+=================================================
+=================================================
+
+- CLIENT
+	> (( OK )) Consulter la liste des médicaments (vendus OU Délivrés)
+	> Déposer une ordonnance (créer une fenetre en +) << utilisable pour plusieurs commandes
+	> Passer une commande (avec case à cocher "J'ai pris connaissance des notices et je n'ai pas besoin de conseils supplémentaires")
+		Si la case est cochée, et si la commande n'est pas en attente (pharmacien), alors il peut payer
+	> Demander l'aide d'un pharmacien
+		> Cela bloque la possibilité de terminer une commande (achat), 
+		  jusqu'à ce qu'un pharmacien réponde à sa question
+			Mais la commande est toujours bien présente
+		> Le client doit donner des informations pour pouvoir le contacter dans ce cas
+	
+
+=================================================
+=================================================
+
+
+- PREPARATEUR
+	> Voir les commandes (pour les préparer)
+	> Passer des commandes aux fournisseurs
+	> Ajouter des médicaments à la liste des médicaments vendus
+
+
+=================================================
+=================================================
+
+- PHARMACIEN
+	> Voir les commandes 
+		> Cloturer une commande (confirmer que la commande est prete à etre envoyée OU à récupérer) avec un mail
+	> Voir les questions des clients
+	> passer commande auprès des fournisseurs
+
+=================================================
+=================================================
+
+- FOURNISSEUR
+	> Le fournisseur ne voit que les informations relatives aux commandes passées par les pharmacies
+		> (ajout d'une partie contact, pour plus de simplicité ?)

@@ -52,6 +52,7 @@
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_CommandesImpayées.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_CreerUtilisateur.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_CalculsFinanciers.cs" />
+    <Compile Include="COUCHE METIER\EXECUTION\CL_WF_ListerMedicaments.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_VerificationDroits.cs" />
     <Compile Include="COUCHE METIER\TECHNIQUE\CL_CT_CalculFacturationDateDate.cs" />
     <Compile Include="COUCHE METIER\TECHNIQUE\CL_CT_CalculValeurStock.cs" />
@@ -79,6 +80,12 @@
     <Compile Include="Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="DepotOrdonnance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepotOrdonnance.Designer.cs">
+      <DependentUpon>DepotOrdonnance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Preparateur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepotOrdonnance.resx">
+      <DependentUpon>DepotOrdonnance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preparateur.resx">
       <DependentUpon>Preparateur.cs</DependentUpon>

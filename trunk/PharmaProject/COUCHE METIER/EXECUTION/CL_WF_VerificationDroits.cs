@@ -54,7 +54,7 @@ namespace PharmaProject
 
 
             // Deconnexion du compte faible
-            CL_DATA_ACCES.Disconnect(msg);
+            CL_DATA_ACCES.Disconnected(msg);
 
 
             // renvoyer le résultat
