@@ -35,27 +35,20 @@ namespace PharmaProject
             string exec = (string)oMsg.Data[1]; // la requete
             STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "", "", "", true, "");
 
-            if (UserExists((string)oMsg.Data[0]))
+            try
             {
-                try
-                {
-                    OracleCommand oCommand = new OracleCommand(exec, connexions[(string)oMsg.Data[0]]);
+                OracleCommand oCommand = new OracleCommand(exec, connexions[(string)oMsg.Data[0]]);
 
-                    oCommand.ExecuteNonQuery();
+                oCommand.ExecuteNonQuery();
 
-                    msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "OK", "", "", true, "");
-                }
-                catch(Exception e)
-                {
-                    Disconnect(oMsg);
-                    msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Reconnexion", "", "", true, "");
-                }
-
+                msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "OK", "", "", true, "");
             }
-            else
+            catch(Exception e)
             {
+                Disconnected(oMsg);
                 msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Reconnexion", "", "", true, "");
             }
+
             
 
             return msg;
@@ -72,13 +65,12 @@ namespace PharmaProject
 
             STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "", "", "", true, "");
 
-            if (UserExists((string)oMsg.Data[0]))
-            {
+            
                 try
                 {
                     // Créer un objet pour lancer la requete
                     OracleCommand oCommand = (OracleCommand)oMsg.Data[1];
-                    oCommand.Connection = connexions[(string)oMsg.Data[0]];
+                    oCommand.Connection = GetConnexion((string)oMsg.Data[0]);
 
                     oCommand.ExecuteNonQuery();
 
@@ -96,15 +88,9 @@ namespace PharmaProject
                 }
                 catch(Exception e)
                 {
-                    Disconnect(oMsg);
+                    Disconnected(oMsg);
                     msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Reconnexion", "", "", true, "");
                 }
-
-            }
-            else
-            {
-                msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Erreur : non connecté", "", "", true, "");
-            }
 
 
             return msg;
@@ -150,15 +136,10 @@ namespace PharmaProject
 
                 try
                 {
-
-                    if (!connexions.ContainsKey((string)oMsg.Data[0]))
-                    {
-                        con.Open();
-                        connexions.Add((string)oMsg.Data[0], con);
-                    }
+                    con.Open();
+                    connexions.Add((string)oMsg.Data[0], con);
 
                     msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "L'utilisateur " + (string)oMsg.Data[0] + " est à présent connecté", "", "", true, "");
-
                 }
                 catch(Exception e)
                 {
@@ -172,11 +153,11 @@ namespace PharmaProject
         }
 
         /// <summary>
-        /// 
+        /// Supprime l'utilisateur de la liste des connexions
         /// </summary>
         /// <param name="oMsg">Data[0] doit contenir le nom</param>
         /// <returns></returns>
-        static public STR_MSG Disconnect(STR_MSG oMsg)
+        static public STR_MSG Disconnected(STR_MSG oMsg)
         {
 
             STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "", "", "", true, "");
@@ -204,22 +185,6 @@ namespace PharmaProject
         //============================================================================
         //============================================================================
         //============================================================================
-
-        static public bool UserExists(string name)
-        {
-            bool retour = false;
-            
-            if (connexions.ContainsKey(name))
-            {
-                retour = true;
-            }
-            else
-            {
-                retour = false;
-            }
-
-            return retour;
-        }
 
         static public OracleConnection GetConnexion(string name)
         {

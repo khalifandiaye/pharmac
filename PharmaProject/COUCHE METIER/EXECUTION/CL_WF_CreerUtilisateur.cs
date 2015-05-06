@@ -32,7 +32,7 @@ namespace PharmaProject
             CL_DATA_ACCES.ExecuteAndReturn(msg); // lancement de la requete
 
             // Deconnexion du compte sysDBA
-            CL_DATA_ACCES.Disconnect(msg);
+            CL_DATA_ACCES.Disconnected(msg);
 
             this.oMsg = CL_MESSAGE_Factory.msg_factory("", null, "Création Réussie", "", "", true, "");
 

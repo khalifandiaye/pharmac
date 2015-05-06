@@ -41,6 +41,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(307, 9);
+            this.label2.Location = new System.Drawing.Point(12, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 5;
@@ -163,11 +164,21 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Coordonnées";
             // 
-            // Form2
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(294, 48);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(204, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Déposer une ordonnance";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 618);
+            this.ClientSize = new System.Drawing.Size(895, 618);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.richTextBox1);
@@ -177,7 +188,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form2";
+            this.Name = "Client";
             this.Text = "Form2";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -201,5 +212,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
     }
 }
