@@ -22,3 +22,4 @@ E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaP
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.DepotOrdonnance.resources
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.Preparateur.resources
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.csproj.GenerateResource.Cache
+C:\Users\Benoit Bosc\Documents\Visual Studio 2013\Projects\pharmac\PharmaProject\bin\Debug\PharmaProject.exe.config
