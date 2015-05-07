@@ -55,6 +55,7 @@
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_ListerMedicaments.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_VerificationDroits.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_Disconnect.cs" />
+    <Compile Include="COUCHE METIER\TECHNIQUE\CL_CT_CalculsFinanciers.cs" />
     <Compile Include="COUCHE PROCESSUS\CL_PROCESS_CLIENT.cs" />
     <Compile Include="COUCHE PROCESSUS\CL_PROCESS_FOURNISSEUR.cs" />
     <Compile Include="COUCHE PROCESSUS\CL_PROCESS_PHARMACIEN.cs" />
@@ -111,9 +112,7 @@
       <DependentUpon>Preparateur.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="COUCHE METIER\TECHNIQUE\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
