@@ -8,6 +8,5 @@ namespace PharmaProject.COUCHE_METIER.TECHNIQUE
 {
     class CL_CT_CalculsFinanciers
     {
-        //test
     }
 }
