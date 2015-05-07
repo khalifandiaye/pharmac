@@ -31,7 +31,7 @@ namespace PharmaProject
             cmd.CommandText = "DBCONNECT";
 
             OracleParameter RV = new OracleParameter();
-            RV.Direction = ParameterDirection.ReturnValue;
+            RV.Direction = ParameterDirection.ReturnValue; // indique si c'est un paramètre entrant, ou de retour
             RV.OracleDbType = OracleDbType.RefCursor;
             RV.ParameterName = "curs";
             //RV.Size = 255;
@@ -39,7 +39,6 @@ namespace PharmaProject
             cmd.Parameters.Add(RV);
 
             cmd.Parameters.Add("login_name", OracleDbType.Varchar2, 255).Value = (string)oMsg.Data[0];
-            //cmd.Parameters.Add("RV", OracleDbType.RefCursor).Direction = ParameterDirection.ReturnValue;
 
             this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { cmd }, "", "", "", true, "");
 
@@ -51,20 +50,29 @@ namespace PharmaProject
 
         public STR_MSG CreateUser(STR_MSG oMsg)
         {
+            string nomUtilisateur = (string)oMsg.Data[0];
+            string mdp = (string)oMsg.Data[1];
+            string role = (string)oMsg.Data[2];
 
-            string req = "execute CreateUser('" + (string)oMsg.Data[0] + "','" + 
-                    (string)oMsg.Data[1] + "','" + (string)oMsg.Data[2] + "')";  
-            this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { req }, 
-                                                            "", "", "", true, "");
+
+            OracleCommand cmd = new OracleCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.CommandText = "CREATE_USER";
+
+            cmd.Parameters.Add("login_name", OracleDbType.Varchar2, 255).Value = nomUtilisateur;
+            cmd.Parameters.Add("mdp", OracleDbType.Varchar2, 255).Value = mdp;
+            cmd.Parameters.Add("role", OracleDbType.Varchar2, 255).Value = role;
+
+            this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { cmd }, "", "", "", true, "");
 
             return this.oMsg;
+
         }
 
         public STR_MSG UnpaidOrder(STR_MSG oMsg)
         {
 
-            string req = "execute ListerCommandesImpayees2Mois('" + (string)oMsg.Data[0] + "')"; // TODO Unpaid Order
-            this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { req }, "", "", "", true, "");
 
             return this.oMsg;
 
@@ -73,9 +81,20 @@ namespace PharmaProject
         public STR_MSG ListStock(STR_MSG oMsg)
         {
 
-            string req = "execute ListerStock()"; // TODO Unpaid Order
-            this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { req }, "", "", "", true, "");
 
+            return this.oMsg;
+
+        }
+
+        public STR_MSG ListMedic(STR_MSG oMsg)
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.CommandText = "LIST_MEDIC";
+
+            this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { cmd }, "", "", "", true, "");
+            
             return this.oMsg;
 
         }

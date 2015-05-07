@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 
 namespace PharmaProject
@@ -17,7 +18,7 @@ namespace PharmaProject
     {
 
 
-        private STR_MSG oMsg;
+        private STR_MSG iMsg;
         private IWorkflow work;
 
 
@@ -33,54 +34,56 @@ namespace PharmaProject
             }
             else if (oMsg.token == "Preparateur")
             {
-                // services préparateur
+                // services préparateurs
             }
             else
             {
-
+                // services clients
             }
-
 
 
             // SERVICES GÉNÉRAUX
-            
+
             // Connexion à la BDD
+            #region Connexion BDD
             if ((oMsg.Invoke == "Connexion") && (oMsg.App_Name == "PharmaProject_v1"))
             {
-                //// vérification des droits
-                this.work = new CL_WF_VerificationDroits();
-                this.oMsg = work.exec(oMsg);
+                
+                this.work = new CL_WF_Connect();
+                STR_MSG retourMsg = work.exec(oMsg);
 
-                // Si la vérification est OK
-                if ((string)this.oMsg.Data[0] == oMsg.token) 
+                // si la connexion a bien réussie
+                if (retourMsg.Info == "OK")
                 {
-                    this.work = new CL_WF_Connect();
-                    this.oMsg = work.exec(oMsg);
-                }
-                else if ((string)this.oMsg.Data[0] == "Utilisateur Inexistant")
-                {
-                    this.oMsg = CL_MESSAGE_Factory.msg_factory("", null, "Utilisateur Inexistant", "", "", true, "");
-                }
+                    // vérification des droits
+                    this.work = new CL_WF_VerificationDroits();
+                    retourMsg = work.exec(oMsg);
 
+                    this.iMsg = CL_MESSAGE_Factory.msg_factory("", retourMsg.Data, "OK", "", "", true, ""); // on renvoit le type d'utilisateur 
+                }
                 else
                 {
-                    this.oMsg = CL_MESSAGE_Factory.msg_factory("", null, "Mauvais droits", "", "", true, "");
+                    this.iMsg = CL_MESSAGE_Factory.msg_factory("", null, "Echec lors de connexion. Le nom ou le mot de passe sont peut-être faux.", "", "", true, "");
                 }
+                
 
             }
+            #endregion
 
             else if ((oMsg.Invoke == "CreerUtilisateur") && (oMsg.App_Name == "PharmaProject_v1"))
             {
-
                 this.work = new CL_WF_CreerUtilisateur();
-                this.oMsg = work.exec(oMsg);
+                this.iMsg = work.exec(oMsg);
+            }
 
+            else if ((oMsg.Invoke == "ListerMedicaments") && (oMsg.App_Name == "PharmaProject_v1"))
+            {
+                this.work = new CL_WF_ListerMedicaments();
+                this.iMsg = work.exec(oMsg);
             }
 
 
-
-
-            return this.oMsg;
+            return this.iMsg;
         }
 
 

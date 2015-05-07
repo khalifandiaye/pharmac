@@ -15,12 +15,17 @@ namespace PharmaProject
         public STR_MSG exec(STR_MSG oMsg)
         {
             // TODO vérification du niveau d'autorisation ?
-            object[] data = new object[] { "sysdba", "mdpDBA" }; // données du compte faible
-            STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", data, "", "", "", true, ""); // pour la connexion avec le compte faible
+            object[] data = new object[] { "sysdba", "mdpDBA" }; // données du compte sysDBA
+            STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", data, "", "", "", true, ""); // pour la connexion
 
 
             STR_MSG execution = CL_DATA_ACCES.Connect(msg); // Connexion avec sysDBA
 
+            if (execution.Info.Substring(0, 6) == "Erreur")
+            {
+                this.oMsg = CL_MESSAGE_Factory.msg_factory("", null, "Erreur", "", "", true, "");
+                return this.oMsg;
+            }
 
             map = new CL_MAP();
             execution = map.CreateUser(oMsg);
@@ -32,7 +37,7 @@ namespace PharmaProject
             CL_DATA_ACCES.ExecuteAndReturn(msg); // lancement de la requete
 
             // Deconnexion du compte sysDBA
-            CL_DATA_ACCES.Disconnected(msg);
+            CL_DATA_ACCES.Disconnect(msg);
 
             this.oMsg = CL_MESSAGE_Factory.msg_factory("", null, "Création Réussie", "", "", true, "");
 

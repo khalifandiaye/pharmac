@@ -33,11 +33,12 @@ namespace PharmaProject
         {
             
             string exec = (string)oMsg.Data[1]; // la requete
+            string utilisateur = (string)oMsg.Data[0];
             STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "", "", "", true, "");
 
             try
             {
-                OracleCommand oCommand = new OracleCommand(exec, connexions[(string)oMsg.Data[0]]);
+                OracleCommand oCommand = new OracleCommand(exec, connexions[utilisateur]);
 
                 oCommand.ExecuteNonQuery();
 
@@ -45,7 +46,7 @@ namespace PharmaProject
             }
             catch(Exception e)
             {
-                Disconnected(oMsg);
+                Disconnect(oMsg);
                 msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Reconnexion", "", "", true, "");
             }
 
@@ -63,18 +64,20 @@ namespace PharmaProject
         static public STR_MSG ExecuteAndReturn(STR_MSG oMsg)
         {
 
+            string nomUtilisateur = (string)oMsg.Data[0];
+            OracleCommand command = (OracleCommand)oMsg.Data[1];
+
             STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "", "", "", true, "");
 
             
                 try
                 {
                     // Créer un objet pour lancer la requete
-                    OracleCommand oCommand = (OracleCommand)oMsg.Data[1];
-                    oCommand.Connection = GetConnexion((string)oMsg.Data[0]);
+                    command.Connection = GetConnexion(nomUtilisateur);
 
-                    oCommand.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
 
-                    OracleDataAdapter da = new OracleDataAdapter(oCommand);
+                    OracleDataAdapter da = new OracleDataAdapter(command);
                     
 
                     // créer un objet pour récupérer le résultat
@@ -88,7 +91,7 @@ namespace PharmaProject
                 }
                 catch(Exception e)
                 {
-                    Disconnected(oMsg);
+                    Disconnect(oMsg);
                     msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Reconnexion", "", "", true, "");
                 }
 
@@ -114,32 +117,28 @@ namespace PharmaProject
         /// <returns></returns>
         static public STR_MSG Connect(STR_MSG oMsg)
         {
-
             STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "", "", "", true, "");
 
+            string username = (string)oMsg.Data[0];
+
+
             // vérification du nombre de connexion
-            if (connexions.Count >= NB_MAX_CONNECTION)
+            if (connexions.Count >= NB_MAX_CONNECTION && (string)oMsg.Data[0] != "sysdba")
             {
                 msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Trop de connexions existantes", "", "", true, "");
             }
             else
             {
-
-
-                //string connexionString = @"Data Source=PharmaProject;User Id=" + (string)oMsg.Data[0] + ";Password=" + (string)oMsg.Data[1] + ";";
-
-                string connexionString = @"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL = TCP)(HOST = 192.168.1.5)(PORT = 1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME = ORCL)));User id=" + (string)oMsg.Data[0] + ";Password=" + (string)oMsg.Data[1];
-
-
+                string connexionString = @"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL = TCP)(HOST = 192.168.1.5)(PORT = 1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME = ORCL)));User id=" + username + ";Password=" + (string)oMsg.Data[1];
 
                 OracleConnection con = new OracleConnection(connexionString);
 
                 try
                 {
                     con.Open();
-                    connexions.Add((string)oMsg.Data[0], con);
+                    connexions.Add(username, con);
 
-                    msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "L'utilisateur " + (string)oMsg.Data[0] + " est à présent connecté", "", "", true, "");
+                    msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "OK", "", "", true, "");
                 }
                 catch(Exception e)
                 {
@@ -148,30 +147,30 @@ namespace PharmaProject
 
             }
 
-
             return msg;
         }
+
 
         /// <summary>
         /// Supprime l'utilisateur de la liste des connexions
         /// </summary>
         /// <param name="oMsg">Data[0] doit contenir le nom</param>
         /// <returns></returns>
-        static public STR_MSG Disconnected(STR_MSG oMsg)
+        static public STR_MSG Disconnect(STR_MSG oMsg)
         {
-
+            string nomUtilisateur = (string)oMsg.Data[0];
             STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "", "", "", true, "");
 
-            if (connexions.ContainsKey((string)oMsg.Data[0]))
+            if (connexions.ContainsKey(nomUtilisateur))
             {
                 try
                 {
-                    connexions[(string)oMsg.Data[0]].Close();
-                    connexions.Remove((string)oMsg.Data[0]);
+                    connexions[nomUtilisateur].Close();
+                    connexions.Remove(nomUtilisateur);
                 }
                 catch
                 {
-                    connexions.Remove((string)oMsg.Data[0]);
+                    connexions.Remove(nomUtilisateur);
                 }
                 
             }
