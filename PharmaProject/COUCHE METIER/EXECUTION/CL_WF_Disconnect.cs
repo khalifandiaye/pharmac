@@ -6,18 +6,14 @@ using System.Threading.Tasks;
 
 namespace PharmaProject
 {
-    class CL_PROCESS_FOURNISSEUR
+    class CL_WF_Disconnect : IWorkflow
     {
-
         private STR_MSG oMsg;
-        CL_WORKFLOW workflow;
 
-        public CL_PROCESS_FOURNISSEUR()
+        public STR_MSG exec(STR_MSG oMsg)
         {
-            workflow = new CL_WORKFLOW();
+            this.oMsg = CL_DATA_ACCES.Disconnect(oMsg);
+            return this.oMsg;
         }
-
-
-
     }
 }

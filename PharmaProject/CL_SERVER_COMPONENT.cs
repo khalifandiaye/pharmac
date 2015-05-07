@@ -9,28 +9,30 @@ namespace PharmaProject
     class CL_SERVER_COMPONENT
     {
 
-        private STR_MSG oMsg;
+        public STR_MSG iMsg;
 
         
-        public STR_MSG Service(STR_MSG oMsg)
+        public void Service(object obj)
         {
+
+            STR_MSG oMsg = (STR_MSG)obj;
+
             if (this.SecuriteAccesPlateforme(oMsg.P_security)) // si la clé de sécurité est OK
             {
                 
                 if (oMsg.Invoke == "Connexion")
                 {
                     CL_PROCESS_CLIENT process = new CL_PROCESS_CLIENT();
-                    this.oMsg = process.Connexion(oMsg);
+                    this.iMsg = process.Connexion(oMsg);
                 }
                 else if (oMsg.Invoke == "PrevisionCA")
                 {
                     CL_PROCESS_PHARMACIEN process = new CL_PROCESS_PHARMACIEN();
-                    this.oMsg = process.Calcul(oMsg);
+                    this.iMsg = process.Calcul(oMsg);
                 }
 
             }
 
-            return this.oMsg;
         }
 
         private bool SecuriteAccesPlateforme(string Cle)

@@ -26,7 +26,6 @@ namespace PharmaProject
             work = new CL_WORK_COMPONENT();
             work.SetAuthentification("Client");
 
-
         }
 
 
@@ -43,10 +42,7 @@ namespace PharmaProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            Thread thr = new Thread(new ThreadStart(Connexion));
-            thr.Start();
-
+            Connexion();
         }
 
 
@@ -54,53 +50,41 @@ namespace PharmaProject
         {
             if (nomTB.Text != "" && mdpTB.Text != "")
             {
+
                 STR_MSG msg = work.AppelCommunication("Connexion", new object[] { nomTB.Text, mdpTB.Text });
 
-                if (msg.Data != null)
+                if (msg.Info == "OK")
                 {
-                    //MessageBox.Show((string)msg.Data[0]);
-                    MessageBox.Show((string)msg.Info);
+
+                    string role = (string)msg.Data[0];
+
                     // ouvre la fenetre correspondante
-                    if (token == "Client")
+                    if (role == "Client")
                     {
-                        //cl = new Client();
                         
+                        Client cl = new Client();
+                        cl.Text = "Espace Client - " + nomTB.Text;
+                        cl.Show(this);
 
-                        this.Invoke((MethodInvoker)delegate()
-                        {
-                            Client cl = new Client();
-                            cl.Text = "Espace Client - " + nomTB.Text;
-                            cl.Show(this);
-
-                            this.Visible = false;
-
-                        });
-
+                        this.Visible = false;
 
                     }
-                    else if (token == "Pharmacien")
+                    else if (role == "Pharmacien")
                     {
 
                     }
-                    else if (token == "Fournisseur")
+                    else if (role == "Fournisseur")
                     {
 
                     }
-                    else if (token == "Preparateur")
+                    else if (role == "Preparateur")
                     {
-                        //prep = new Preparateur();
-                        
 
-                        this.Invoke((MethodInvoker)delegate()
-                        {
-                            Preparateur prep = new Preparateur();
-                            prep.Text = "Espace Préparateur - " + nomTB.Text;
-                            prep.Show();
+                        Preparateur prep = new Preparateur();
+                        prep.Text = "Espace Préparateur - " + nomTB.Text;
+                        prep.Show();
 
-                            this.Visible = false;
-
-                        });
-
+                        this.Visible = false;
 
                     }
 

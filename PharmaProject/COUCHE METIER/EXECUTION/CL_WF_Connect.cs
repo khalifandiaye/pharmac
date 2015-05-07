@@ -9,8 +9,6 @@ namespace PharmaProject
     class CL_WF_Connect : IWorkflow
     {
         private STR_MSG oMsg;
-        private CL_MAP map;
-
 
         public STR_MSG exec(STR_MSG oMsg)
         {

@@ -54,8 +54,7 @@
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_CalculsFinanciers.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_ListerMedicaments.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_VerificationDroits.cs" />
-    <Compile Include="COUCHE METIER\TECHNIQUE\CL_CT_CalculFacturationDateDate.cs" />
-    <Compile Include="COUCHE METIER\TECHNIQUE\CL_CT_CalculValeurStock.cs" />
+    <Compile Include="COUCHE METIER\EXECUTION\CL_WF_Disconnect.cs" />
     <Compile Include="COUCHE PROCESSUS\CL_PROCESS_CLIENT.cs" />
     <Compile Include="COUCHE PROCESSUS\CL_PROCESS_FOURNISSEUR.cs" />
     <Compile Include="COUCHE PROCESSUS\CL_PROCESS_PHARMACIEN.cs" />
@@ -67,7 +66,6 @@
     <Compile Include="COUCHE METIER\MAPPING\CL_MAP.cs" />
     <Compile Include="CL_WORKFLOW.cs" />
     <Compile Include="CL_MESSAGE.cs" />
-    <Compile Include="CL_PROCESS.cs" />
     <Compile Include="Accueil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +110,9 @@
     <EmbeddedResource Include="Preparateur.resx">
       <DependentUpon>Preparateur.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="COUCHE METIER\TECHNIQUE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
