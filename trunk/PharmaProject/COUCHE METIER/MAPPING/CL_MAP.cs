@@ -24,7 +24,6 @@ namespace PharmaProject
         public STR_MSG VerifDroits(STR_MSG oMsg)
         {
 
-            
             OracleCommand cmd = new OracleCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -45,7 +44,6 @@ namespace PharmaProject
 
             return this.oMsg;
         }
-
 
 
         public STR_MSG CreateUser(STR_MSG oMsg)
