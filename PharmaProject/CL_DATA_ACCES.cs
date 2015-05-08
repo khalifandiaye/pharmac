@@ -129,7 +129,7 @@ namespace PharmaProject
             }
             else
             {
-                string connexionString = @"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL = TCP)(HOST = 192.168.1.5)(PORT = 1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME = ORCL)));User id=" + username + ";Password=" + (string)oMsg.Data[1];
+                string connexionString = @"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL = TCP)(HOST = 192.168.1.5)(PORT = 1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME = pharmadb)));User id=" + username + ";Password=" + (string)oMsg.Data[1];
 
                 OracleConnection con = new OracleConnection(connexionString);
 

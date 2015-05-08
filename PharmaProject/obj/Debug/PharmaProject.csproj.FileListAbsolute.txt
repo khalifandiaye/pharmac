@@ -16,10 +16,11 @@ H:\Informatique\A3\PROJET\Oracle .NET\PharmaProject\PharmaProject\obj\Debug\Phar
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\bin\Debug\PharmaProject.exe.config
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.exe
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.pdb
-E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.csprojResolveAssemblyReference.cache
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.Accueil.resources
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.Client.resources
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.DepotOrdonnance.resources
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.Preparateur.resources
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.csproj.GenerateResource.Cache
 C:\Users\Benoit Bosc\Documents\Visual Studio 2013\Projects\pharmac\PharmaProject\bin\Debug\PharmaProject.exe.config
+E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\bin\Debug\PharmaProject.exe
+E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\bin\Debug\PharmaProject.pdb

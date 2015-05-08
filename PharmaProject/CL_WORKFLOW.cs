@@ -17,10 +17,8 @@ namespace PharmaProject
     class CL_WORKFLOW
     {
 
-
         private STR_MSG iMsg;
         private IWorkflow work;
-
 
         public STR_MSG Redirect(STR_MSG oMsg)
         {
@@ -63,7 +61,7 @@ namespace PharmaProject
                 }
                 else
                 {
-                    this.iMsg = CL_MESSAGE_Factory.msg_factory("", null, "Echec lors de connexion. Le nom ou le mot de passe sont peut-être faux.", "", "", true, "");
+                    this.iMsg = CL_MESSAGE_Factory.msg_factory("", null, "Erreur lors de la connexion : " + retourMsg.Info, "", "", true, "");
                 }
                 
 
