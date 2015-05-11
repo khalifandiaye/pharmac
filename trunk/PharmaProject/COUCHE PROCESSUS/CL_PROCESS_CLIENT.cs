@@ -31,5 +31,10 @@ namespace PharmaProject
         {
             return this.oMsg = workflow.Redirect(oMsg);
         }
+
+        public STR_MSG PasserCommande(STR_MSG oMsg)
+        {
+            return this.oMsg = workflow.Redirect(oMsg);
+        }
     }
 }

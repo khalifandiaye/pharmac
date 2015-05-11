@@ -42,6 +42,11 @@ namespace PharmaProject
                     CL_PROCESS_CLIENT process = new CL_PROCESS_CLIENT();
                     this.iMsg = process.ListerMedics(oMsg);
                 }
+                else if (oMsg.Invoke == "CommandeClient")
+                {
+                    CL_PROCESS_CLIENT process = new CL_PROCESS_CLIENT();
+                    ///////
+                }
 
             }
 

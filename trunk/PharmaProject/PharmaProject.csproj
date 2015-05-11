@@ -53,6 +53,7 @@
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_CreerUtilisateur.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_CalculsFinanciers.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_ListerMedicaments.cs" />
+    <Compile Include="COUCHE METIER\EXECUTION\CL_WF_PasserCommandeCliente.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_VerificationDroits.cs" />
     <Compile Include="COUCHE METIER\EXECUTION\CL_WF_Disconnect.cs" />
     <Compile Include="COUCHE METIER\TECHNIQUE\CL_CT_CalculsFinanciers.cs" />

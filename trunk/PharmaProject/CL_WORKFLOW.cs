@@ -37,6 +37,10 @@ namespace PharmaProject
             else
             {
                 // services clients
+                if ((oMsg.Invoke == "CommandeClient") && (oMsg.App_Name == "PharmaProject_v1"))
+                {
+                    this.work = new 
+                }
             }
 
 
