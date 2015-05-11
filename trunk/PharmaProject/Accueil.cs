@@ -71,30 +71,30 @@ namespace PharmaProject
                     }
                     else if (role == "PHARMACIEN")
                     {
-                        Pharmacien ph = new Pharmacien(nomTB.Text);
-                        ph.Text = "Espace Pharmacien - " + nomTB.Text;
-                        ph.Show(this);
+                        //Pharmacien ph = new Pharmacien(nomTB.Text);
+                        //ph.Text = "Espace Pharmacien - " + nomTB.Text;
+                        //ph.Show(this);
 
-                        this.Visible = false;
+                        //this.Visible = false;
 
                     }
                     else if (role == "FOURNISSEUR")
                     {
-                        Fournisseur frni = new Fournisseur(nomTB.Text);
-                        frni.Text = "Espace Fournisseur - " + nomTB.Text;
-                        frni.Show(this);
+                        //Fournisseur frni = new Fournisseur(nomTB.Text);
+                        //frni.Text = "Espace Fournisseur - " + nomTB.Text;
+                        //frni.Show(this);
 
-                        this.Visible = false;
+                        //this.Visible = false;
 
                     }
                     else if (role == "PREPARATEUR")
                     {
 
-                        Preparateur prep = new Preparateur(nomTB.Text);
-                        prep.Text = "Espace Préparateur - " + nomTB.Text;
-                        prep.Show();
+                        //Preparateur prep = new Preparateur(nomTB.Text);
+                        //prep.Text = "Espace Préparateur - " + nomTB.Text;
+                        //prep.Show();
 
-                        this.Visible = false;
+                        //this.Visible = false;
 
                     }
 

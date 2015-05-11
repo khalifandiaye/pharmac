@@ -24,4 +24,3 @@ E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaP
 C:\Users\Benoit Bosc\Documents\Visual Studio 2013\Projects\pharmac\PharmaProject\bin\Debug\PharmaProject.exe.config
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\bin\Debug\PharmaProject.exe
 E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\bin\Debug\PharmaProject.pdb
-E:\Informatique\A3\PROJET\Oracle .NET\CodePharma\PharmaProject\obj\Debug\PharmaProject.csprojResolveAssemblyReference.cache

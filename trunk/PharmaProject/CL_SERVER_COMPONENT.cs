@@ -45,7 +45,7 @@ namespace PharmaProject
                 else if (oMsg.Invoke == "CommandeClient")
                 {
                     CL_PROCESS_CLIENT process = new CL_PROCESS_CLIENT();
-                    ///////
+                    this.iMsg = process.PasserCommande(oMsg);
                 }
 
             }

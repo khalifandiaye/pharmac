@@ -23,6 +23,7 @@ namespace PharmaProject
             this.username = username;
             work = new CL_WORK_COMPONENT();
             work.SetAuthentification("Client");
+            Recherche_Client();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -47,20 +48,20 @@ namespace PharmaProject
 
         private void Recherche_Client()
         {
-            if (rech.Text != "")
-            {
-                STR_MSG msg = work.AppelCommunication("ListerMedics", new object[] {username, rech.Text });
+            //if (rech.Text != "")
+            //{
+                STR_MSG msg = work.AppelCommunication("ListerMedics", new object[] { username });
 
                 if (msg.Info == "OK")
                 {
-                    DataSet ds = (DataSet) msg.Data[0];
+                    DataSet ds = (DataSet)msg.Data[0];
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         ListMedic.Items.Add(row["MEDICS_NAME"].ToString());
                     }
 
                 }
-            }
+            //}
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -72,7 +73,21 @@ namespace PharmaProject
         {
             foreach (ListViewItem item in ListMedic.SelectedItems)
             {
-                ListCommande.Items.Add(item);
+                ListViewItem newItem = (ListViewItem)item.Clone();
+
+                bool IsContained = false;
+                foreach(ListViewItem i in ListCommande.Items)
+                {
+                    if (i.Text == newItem.Text)
+                    {
+                        IsContained = true;
+                        break;
+                    }
+                }
+                if(!IsContained)
+                {
+                    ListCommande.Items.Add(newItem);
+                }
             }
         }
 
@@ -97,22 +112,21 @@ namespace PharmaProject
             
             string question = null;
            
-                if (!checkbox.Checked)
-                    {
-                        question = richTextBox1.Text;
+            if (!checkbox.Checked)
+            {
+                question = richTextBox1.Text;
 
-                    }
-                
+            }
              
-                STR_MSG msg = work.AppelCommunication("CommandeClient", new object[] { username, dataCommande, question });
-                if (msg.Info == "OK")
-                {
-                    MessageBox.Show("La commande a été validée !");
-                }
-                else
-                {
-                    MessageBox.Show(msg.Info);
-                }
+            STR_MSG msg = work.AppelCommunication("CommandeClient", new object[] { username, dataCommande, question });
+            if (msg.Info == "OK")
+            {
+                MessageBox.Show("La commande a été validée !");
+            }
+            else
+            {
+                MessageBox.Show(msg.Info);
+            }
         }
 
         
@@ -131,6 +145,11 @@ namespace PharmaProject
             {
                 richTextBox1.Visible = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
