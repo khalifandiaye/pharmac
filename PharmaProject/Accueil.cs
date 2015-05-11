@@ -59,28 +59,38 @@ namespace PharmaProject
                     string role = (string)msg.Data[0];
 
                     // ouvre la fenetre correspondante
-                    if (role == "Client")
+                    if (role == "CLIENT")
                     {
                         
-                        Client cl = new Client();
+                        Client cl = new Client(nomTB.Text);
                         cl.Text = "Espace Client - " + nomTB.Text;
                         cl.Show(this);
 
                         this.Visible = false;
 
                     }
-                    else if (role == "Pharmacien")
+                    else if (role == "PHARMACIEN")
                     {
+                        Pharmacien ph = new Pharmacien(nomTB.Text);
+                        ph.Text = "Espace Pharmacien - " + nomTB.Text;
+                        ph.Show(this);
+
+                        this.Visible = false;
 
                     }
-                    else if (role == "Fournisseur")
+                    else if (role == "FOURNISSEUR")
                     {
+                        Fournisseur frni = new Fournisseur(nomTB.Text);
+                        frni.Text = "Espace Fournisseur - " + nomTB.Text;
+                        frni.Show(this);
+
+                        this.Visible = false;
 
                     }
-                    else if (role == "Preparateur")
+                    else if (role == "PREPARATEUR")
                     {
 
-                        Preparateur prep = new Preparateur();
+                        Preparateur prep = new Preparateur(nomTB.Text);
                         prep.Text = "Espace Préparateur - " + nomTB.Text;
                         prep.Show();
 
@@ -104,38 +114,27 @@ namespace PharmaProject
 
         private void clientRB_CheckedChanged(object sender, EventArgs e)
         {
-            if (clientRB.Checked == true)
-            {
-                work.SetAuthentification("Client");
-                token = "Client";
-            }
+           
         }
 
         private void pharmaRB_CheckedChanged(object sender, EventArgs e)
         {
-            if (pharmaRB.Checked == true)
-            {
-                work.SetAuthentification("Pharmacien");
-                token = "Pharmacien";
-            }
+           
         }
 
         private void prepRB_CheckedChanged(object sender, EventArgs e)
         {
-            if (prepRB.Checked == true)
-            {
-                work.SetAuthentification("Preparateur");
-                token = "Preparateur";
-            }
+            
         }
 
         private void fourniRB_CheckedChanged(object sender, EventArgs e)
         {
-            if (fourniRB.Checked == true)
-            {
-                work.SetAuthentification("Fournisseur");
-                token = "Fournisseur";
-            }
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
 
 
