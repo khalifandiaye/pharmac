@@ -22,19 +22,14 @@ namespace PharmaProject
             return this.oMsg = workflow.Redirect(oMsg);
         }
 
-
-
-
-
-        //==========================================================
-        //==========================================================
-        //==========================================================
-        //==========================================================
-
-        public STR_MSG LancerTest(STR_MSG oMsg)
+        public STR_MSG CreerUtilisateur(STR_MSG oMsg)
         {
             return this.oMsg = workflow.Redirect(oMsg);
         }
 
+        public STR_MSG ListerMedics(STR_MSG oMsg)
+        {
+            return this.oMsg = workflow.Redirect(oMsg);
+        }
     }
 }

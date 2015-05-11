@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,13 +16,13 @@ namespace PharmaProject
         public STR_MSG exec(STR_MSG oMsg)
         {
             // TODO vérification du niveau d'autorisation ?
-            object[] data = new object[] { "sysdba", "mdpDBA" }; // données du compte sysDBA
+            object[] data = new object[] { "PHARMAWEB", "Azerty64" }; // données du compte sys
             STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", data, "", "", "", true, ""); // pour la connexion
 
 
-            STR_MSG execution = CL_DATA_ACCES.Connect(msg); // Connexion avec sysDBA
+            STR_MSG execution = CL_DATA_ACCES.Connect(msg); // Connexion avec sys
 
-            if (execution.Info.Substring(0, 6) == "Erreur")
+            if (execution.Info != "OK")
             {
                 this.oMsg = CL_MESSAGE_Factory.msg_factory("", null, "Erreur", "", "", true, "");
                 return this.oMsg;
@@ -31,15 +32,23 @@ namespace PharmaProject
             execution = map.CreateUser(oMsg);
 
 
-            data = new object[] { "sysdba", (string)execution.Data[0] };
+            data = new object[] { "PHARMAWEB", (OracleCommand)execution.Data[0] };
             msg = CL_MESSAGE_Factory.msg_factory("", data, "", "", "", true, "");
 
-            CL_DATA_ACCES.ExecuteAndReturn(msg); // lancement de la requete
+            STR_MSG retour = CL_DATA_ACCES.Execute(msg); // lancement de la requete
 
-            // Deconnexion du compte sysDBA
+            // Deconnexion du compte sys
             CL_DATA_ACCES.Disconnect(msg);
 
-            this.oMsg = CL_MESSAGE_Factory.msg_factory("", null, "Création Réussie", "", "", true, "");
+            if (retour.Info != "OK")
+            {
+                this.oMsg = retour;
+            }
+            else
+            {
+                this.oMsg = CL_MESSAGE_Factory.msg_factory("", null, "OK", "", "", true, "");
+            }
+            
 
             return this.oMsg;
         }

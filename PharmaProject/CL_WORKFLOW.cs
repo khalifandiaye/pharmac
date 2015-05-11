@@ -68,13 +68,13 @@ namespace PharmaProject
             }
             #endregion
 
-            else if ((oMsg.Invoke == "CreerUtilisateur") && (oMsg.App_Name == "PharmaProject_v1"))
+            else if ((oMsg.Invoke == "createUser") && (oMsg.App_Name == "PharmaProject_v1"))
             {
                 this.work = new CL_WF_CreerUtilisateur();
                 this.iMsg = work.exec(oMsg);
             }
 
-            else if ((oMsg.Invoke == "ListerMedicaments") && (oMsg.App_Name == "PharmaProject_v1"))
+            else if ((oMsg.Invoke == "ListerMedics") && (oMsg.App_Name == "PharmaProject_v1"))
             {
                 this.work = new CL_WF_ListerMedicaments();
                 this.iMsg = work.exec(oMsg);

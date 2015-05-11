@@ -18,7 +18,6 @@ namespace PharmaProject
     {
 
         private STR_MSG oMsg;
-        private string rq_sql;
 
 
         public STR_MSG VerifDroits(STR_MSG oMsg)
@@ -27,7 +26,7 @@ namespace PharmaProject
             OracleCommand cmd = new OracleCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.CommandText = "DBCONNECT";
+            cmd.CommandText = "PHARMAWEB.fn_getuserprofile";
 
             OracleParameter RV = new OracleParameter();
             RV.Direction = ParameterDirection.ReturnValue; // indique si c'est un paramètre entrant, ou de retour
@@ -37,7 +36,7 @@ namespace PharmaProject
 
             cmd.Parameters.Add(RV);
 
-            cmd.Parameters.Add("login_name", OracleDbType.Varchar2, 255).Value = (string)oMsg.Data[0];
+            cmd.Parameters.Add("user_name", OracleDbType.Varchar2, 255).Value = (string)oMsg.Data[0];
 
             this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { cmd }, "", "", "", true, "");
 
@@ -56,11 +55,11 @@ namespace PharmaProject
             OracleCommand cmd = new OracleCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.CommandText = "CREATE_USER";
+            cmd.CommandText = "pc_createuser";
 
-            cmd.Parameters.Add("login_name", OracleDbType.Varchar2, 255).Value = nomUtilisateur;
-            cmd.Parameters.Add("mdp", OracleDbType.Varchar2, 255).Value = mdp;
-            cmd.Parameters.Add("role", OracleDbType.Varchar2, 255).Value = role;
+            cmd.Parameters.Add("username", OracleDbType.Varchar2, 255).Value = nomUtilisateur;
+            cmd.Parameters.Add("password", OracleDbType.Varchar2, 255).Value = mdp;
+            cmd.Parameters.Add("profile", OracleDbType.Varchar2, 255).Value = role;
 
             this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { cmd }, "", "", "", true, "");
 
@@ -89,7 +88,17 @@ namespace PharmaProject
             OracleCommand cmd = new OracleCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.CommandText = "LIST_MEDIC";
+            cmd.CommandText = "PHARMAWEB.get_medicaments";
+
+
+            OracleParameter RV = new OracleParameter();
+            RV.Direction = ParameterDirection.ReturnValue; // indique si c'est un paramètre entrant, ou de retour
+            RV.OracleDbType = OracleDbType.RefCursor;
+            RV.ParameterName = "curs";
+
+            cmd.Parameters.Add(RV);
+
+
 
             this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { cmd }, "", "", "", true, "");
             

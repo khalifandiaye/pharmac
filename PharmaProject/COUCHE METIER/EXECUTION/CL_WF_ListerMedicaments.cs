@@ -20,11 +20,11 @@ namespace PharmaProject
 
             STR_MSG retour = map.ListMedic(oMsg);
 
-            object[] data = new object[] { retour.Data[0],oMsg.Data[0] }; // la commande + le nom de l'utilisateur
+            object[] data = new object[] { oMsg.Data[0], retour.Data[0] }; // le nom de l'utilisateur + la commande 
 
             this.iMsg = CL_MESSAGE_Factory.msg_factory("", data, "", "", "", true, "");
 
-            this.iMsg = CL_DATA_ACCES.Execute(this.iMsg);
+            this.iMsg = CL_DATA_ACCES.ExecuteAndReturn(this.iMsg);
 
             return this.iMsg;
         }
