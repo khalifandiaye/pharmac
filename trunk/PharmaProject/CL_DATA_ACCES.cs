@@ -31,23 +31,22 @@ namespace PharmaProject
         /// <returns></returns>
         static public STR_MSG Execute(STR_MSG oMsg)
         {
-            
-            string exec = (string)oMsg.Data[1]; // la requete
+
+            OracleCommand exec = (OracleCommand)oMsg.Data[1]; // la requete
             string utilisateur = (string)oMsg.Data[0];
             STR_MSG msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "", "", "", true, "");
 
             try
             {
-                OracleCommand oCommand = new OracleCommand(exec, connexions[utilisateur]);
+                exec.Connection = connexions[utilisateur];
 
-                oCommand.ExecuteNonQuery();
+                exec.ExecuteNonQuery();
 
                 msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "OK", "", "", true, "");
             }
             catch(Exception e)
             {
-                Disconnect(oMsg);
-                msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Reconnexion", "", "", true, "");
+                msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Erreur : "+ e.Message, "", "", true, "");
             }
 
             

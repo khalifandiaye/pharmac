@@ -25,10 +25,22 @@ namespace PharmaProject
                     CL_PROCESS_CLIENT process = new CL_PROCESS_CLIENT();
                     this.iMsg = process.Connexion(oMsg);
                 }
+                else if (oMsg.Invoke == "createUser")
+                {
+                    CL_PROCESS_CLIENT process = new CL_PROCESS_CLIENT();
+                    this.iMsg = process.CreerUtilisateur(oMsg);
+                }
+
                 else if (oMsg.Invoke == "PrevisionCA")
                 {
                     CL_PROCESS_PHARMACIEN process = new CL_PROCESS_PHARMACIEN();
                     this.iMsg = process.Calcul(oMsg);
+                }
+
+                else if (oMsg.Invoke == "ListerMedics")
+                {
+                    CL_PROCESS_CLIENT process = new CL_PROCESS_CLIENT();
+                    this.iMsg = process.ListerMedics(oMsg);
                 }
 
             }
