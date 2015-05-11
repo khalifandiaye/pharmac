@@ -32,7 +32,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.rech = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.ListCommande = new System.Windows.Forms.ListView();
             this.add = new System.Windows.Forms.Button();
             this.remove = new System.Windows.Forms.Button();
@@ -60,6 +59,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Recherche";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -77,15 +77,6 @@
             this.rech.Size = new System.Drawing.Size(195, 20);
             this.rech.TabIndex = 4;
             this.rech.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Nom Prénom Client";
             // 
             // ListCommande
             // 
@@ -180,7 +171,6 @@
             this.Controls.Add(this.remove);
             this.Controls.Add(this.add);
             this.Controls.Add(this.ListCommande);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.rech);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -198,7 +188,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox rech;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListView ListCommande;
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.Button remove;

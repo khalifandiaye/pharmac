@@ -84,14 +84,23 @@ namespace PharmaProject
                     da.Fill(ds);
 
                     // mettre le résultat dans un objet[]
-                    object[] data = new object[] { ds };
+                    if (ds.Tables.Count > 0)
+                    {
+                        object[] data = new object[] { ds };
+                        msg = CL_MESSAGE_Factory.msg_factory("", data, "OK", "", "", true, "");
+                    }
+                    else
+                    {
+                        object[] data = new object[] { command.Parameters };
+                        msg = CL_MESSAGE_Factory.msg_factory("", data, "OK", "", "", true, "");
+                    }
 
-                    msg = CL_MESSAGE_Factory.msg_factory("", data, "OK", "", "", true, "");
+                    
                 }
                 catch(Exception e)
                 {
                     Disconnect(oMsg);
-                    msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Reconnexion", "", "", true, "");
+                    msg = CL_MESSAGE_Factory.msg_factory("", new object[] { }, "Erreur : " + e.Message, "", "", true, "");
                 }
 
 

@@ -63,7 +63,6 @@ namespace PharmaProject
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.CommandText = "pc_createuser";
-
             cmd.Parameters.Add("nom", OracleDbType.Varchar2, 255).Value = nom;
             cmd.Parameters.Add("prenom", OracleDbType.Varchar2, 255).Value = prenom;
             cmd.Parameters.Add("adresse", OracleDbType.Varchar2, 255).Value = adresse;
@@ -127,7 +126,7 @@ namespace PharmaProject
         {
             OracleCommand cmd = new OracleCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PHARMAWEB.SELECT_CLIENT_FROM_NAME";
+            cmd.CommandText = "PHARMAWEB.SELECT_PATIENT_FROM_NAME";
 
             OracleParameter RV = new OracleParameter();
             RV.Direction = ParameterDirection.ReturnValue; // indique si c'est un paramètre entrant, ou de retour
@@ -151,10 +150,11 @@ namespace PharmaProject
         public STR_MSG CreerCommandeCliente(STR_MSG oMsg)
         {
 
-            char status = (char)oMsg.Data[0];
-            char prescription = (char)oMsg.Data[1];
-            char hasRead = (char)oMsg.Data[2];
-            int patientID = (int)oMsg.Data[3];
+            char status = '1'; // commande OK
+            char prescription = '0'; // commande sans prescription
+            char hasRead = '1'; //
+            int prescription_id = 1;
+            int patientID = (int)oMsg.Data[1];
 
             OracleCommand cmd = new OracleCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -166,16 +166,49 @@ namespace PharmaProject
             RV.ParameterName = "id";
 
             cmd.Parameters.Add(RV);
-            cmd.Parameters.Add("status", OracleDbType.Char).Value = status;
+            
+            cmd.Parameters.Add("statut", OracleDbType.Char).Value = status;
             cmd.Parameters.Add("prescription", OracleDbType.Char).Value = prescription;
             cmd.Parameters.Add("hasRead", OracleDbType.Char).Value = hasRead;
+            cmd.Parameters.Add("prescription_id", OracleDbType.Int32, 255).Value = prescription_id;
             cmd.Parameters.Add("patientID", OracleDbType.Int32, 255).Value = patientID;
+
+            
 
             this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { cmd }, "", "", "", true, "");
 
             return this.oMsg;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="oMsg">oMsg.Data[1] = ID_MEDIC</param>
+        /// <returns></returns>
+        public STR_MSG RecordMedic(STR_MSG oMsg)
+        {
+            char isReserved = '1';
+            int quantity = 1;
+            int ID_Medic = 3;
+            int ID_Commande = (int)oMsg.Data[2];
+
+            OracleCommand cmd = new OracleCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "PHARMAWEB.record_commande_client";
+            cmd.Parameters.Add("isreserved0", OracleDbType.Char).Value = isReserved;
+            cmd.Parameters.Add("quantity0", OracleDbType.Int32, 255).Value = quantity;
+            cmd.Parameters.Add("idM", OracleDbType.Int32, 255).Value = ID_Medic;
+            cmd.Parameters.Add("idOrder", OracleDbType.Int32, 255).Value = ID_Commande;
+
+            this.oMsg = CL_MESSAGE_Factory.msg_factory("", new object[] { cmd }, "", "", "", true, "");
+
+            return this.oMsg;
+        }
+
+        //public STR_MSG RecordMedicOrdonnance(STR_MSG oMsg)
+        //{
+
+        //}
 
     }
 }
