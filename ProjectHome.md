@@ -1,0 +1,1 @@
+Le Projet Pharmaweb consiste à créer une pharmacie en ligne, enfin un proto logiciel. De la merde quoi
